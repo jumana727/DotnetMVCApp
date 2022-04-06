@@ -1,0 +1,42 @@
+@model  IEnumerable<MVCApp.Models.Teacher>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <form asp-controller="Teacher" asp-action="Index">
+        <p>
+            Name : <input type="text" name="SearchString" />
+            <input type="submit" value="Filter">
+        </p>
+    </form>    
+        <div class="col-8">
+            <h2 class="text-primary">Teacher List</h2>
+        </div>
+       <a asp-controller="Teacher" asp-action="Create" class="btn btn-primary">
+            Create New Teacher
+        </a>
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Teacher Name</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj1 in Model)
+                {
+                    <tr>
+                        <td width="50%">@obj1.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p> No Teacher details.</p>
+    }
+    </div>
